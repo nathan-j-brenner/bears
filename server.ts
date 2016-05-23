@@ -3,11 +3,14 @@
 import * as express from 'express';
 const app = express();
 import * as bodyParser from 'body-parser';
+import * as mongoose from 'mongoose';
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const port = process.env.PORT || 8080;
+
+mongoose.connect('mongodb://admin:admin@ds011903.mlab.com:11903/dabears')
 
 const router = express.Router();
 
