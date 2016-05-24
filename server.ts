@@ -75,6 +75,16 @@ router.route('/bears/:bear_id')
                 res.json({ message: 'Bear updated!' });
             });
         });
+    })
+    
+    // delete the bear with this id (accessed at DELETE http://localhost:8080/api/bears/bear_id)
+    .delete((req, res)=>{
+        Bear.remove({
+            _id: req.params.bear_id
+        }, (err, bear)=>{
+            if(err) res.send(err);
+            res.json({ message: 'Successfully deleted' });
+        });
     });
 // register our routes
 app.use('/api', router);
