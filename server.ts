@@ -50,6 +50,16 @@ router.route('/bears')
         });
     });
 
+//on routes that end in /bears/:bear_id
+router.route('/bears/:bear_id')
+    // get the bear with the id (accessed at GET http://localhost:8080/api/bears/:bear_id)
+    .get((req, res) => {
+        Bear.findById(req.params.bear_id, (err, bear)=>{
+            if (err) res.send(err);
+
+            res.json(bear);
+        });
+    });
 // register our routes
 app.use('/api', router);
 
