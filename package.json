@@ -8,7 +8,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w -outDir dist",
     "dev": "npm run tsc:w",
-    "start": "node server.js"
+    "start": "node dist/server.js"
   },
   "author": "",
   "license": "ISC",
