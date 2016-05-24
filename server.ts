@@ -59,6 +59,22 @@ router.route('/bears/:bear_id')
 
             res.json(bear);
         });
+    })
+
+    // update the bear with this id (accessed at PUT http://localhost:8080/api/bears/:bear_id)
+    .put((req, res)=>{
+        Bear.findById(req.params.bear_id, (err, bear)=>{
+            if (err) res.send(err);
+            
+            bear.name = req.body.name; // update the bears info
+            
+            // save the bear
+            bear.save(err=>{
+                if(err) res.send(err);
+                
+                res.json({ message: 'Bear updated!' });
+            });
+        });
     });
 // register our routes
 app.use('/api', router);
